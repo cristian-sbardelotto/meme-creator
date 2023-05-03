@@ -1,6 +1,13 @@
+import { useRef } from 'react';
 import * as S from './styles';
 
 export default function MemeCreator() {
+  const inpRef = useRef<HTMLInputElement>(null);
+
+  function selectFile() {
+    inpRef.current?.click();
+  }
+
   return (
     <S.Container>
       <header>
@@ -10,7 +17,14 @@ export default function MemeCreator() {
       </header>
 
       <main>
-        <S.Button>Create a New Meme</S.Button>
+        <S.Button onClick={selectFile}>
+          Create a New Meme
+          <input
+            ref={inpRef}
+            type='file'
+            title=''
+          />
+        </S.Button>
       </main>
 
       <footer>

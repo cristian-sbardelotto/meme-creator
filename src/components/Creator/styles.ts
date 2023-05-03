@@ -21,6 +21,8 @@ export const Title = styled.h1`
 `;
 
 export const Button = styled.button`
+  position: relative;
+
   padding: 0.8rem 2rem;
 
   border: none;
@@ -31,6 +33,11 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.colors.background};
 
   transition: 0.1s all ease;
+
+  input {
+    width: 0;
+    height: 0;
+  }
 
   &:hover {
     cursor: pointer;
