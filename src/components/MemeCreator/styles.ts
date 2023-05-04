@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const MainContainer = styled.div`
   height: 100vh;
 
   display: flex;
@@ -18,6 +18,14 @@ export const Title = styled.h1`
     font-weight: 900;
     color: ${({ theme }) => theme.colors.primary_button};
   }
+`;
+
+export const EditorContainer = styled.div`
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 export const Button = styled.button`
