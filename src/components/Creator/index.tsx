@@ -1,11 +1,14 @@
-import { useRef } from 'react';
+import { useState, useRef, ChangeEvent } from 'react';
 import * as S from './styles';
 
 export default function MemeCreator() {
+  const [image, setImage] = useState<File>();
   const inpRef = useRef<HTMLInputElement>(null);
 
-  function selectFile() {
-    inpRef.current?.click();
+  function addFile(event: ChangeEvent<HTMLInputElement>) {
+    if (!event.target.files) return;
+
+    setImage(event.target.files[0]);
   }
 
   return (
@@ -17,12 +20,12 @@ export default function MemeCreator() {
       </header>
 
       <main>
-        <S.Button onClick={selectFile}>
+        <S.Button onClick={() => inpRef.current?.click()}>
           Create a New Meme
           <input
             ref={inpRef}
             type='file'
-            title=''
+            onChange={event => addFile(event)}
           />
         </S.Button>
       </main>
@@ -39,6 +42,13 @@ export default function MemeCreator() {
           </a>
         </S.Developer>
       </footer>
+
+      {image && (
+        <S.Image
+          src={URL.createObjectURL(image)}
+          alt='image selected by the user to create the meme'
+        />
+      )}
     </S.Container>
   );
 }

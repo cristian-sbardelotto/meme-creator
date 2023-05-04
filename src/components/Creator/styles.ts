@@ -57,3 +57,7 @@ export const Developer = styled.p`
     }
   }
 `;
+
+export const Image = styled.img`
+  height: 300px;
+`;
