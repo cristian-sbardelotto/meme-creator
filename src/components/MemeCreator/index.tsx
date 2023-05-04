@@ -1,4 +1,8 @@
 import { useState, useRef, ChangeEvent } from 'react';
+
+import Header from '../Header';
+import Footer from '../Footer';
+
 import * as S from './styles';
 
 export default function MemeCreator() {
@@ -22,11 +26,7 @@ export default function MemeCreator() {
         </S.EditorContainer>
       ) : (
         <S.MainContainer>
-          <header>
-            <S.Title>
-              Meme <span>Creator</span>
-            </S.Title>
-          </header>
+          <Header />
 
           <main>
             <S.Button onClick={() => inpRef.current?.click()}>
@@ -39,18 +39,7 @@ export default function MemeCreator() {
             </S.Button>
           </main>
 
-          <footer>
-            <S.Developer>
-              Developed by{' '}
-              <a
-                href='http://github.com/cristian-sbardelotto/'
-                target='_blank'
-                rel='noreferrer'
-              >
-                Cristian Sbardelotto
-              </a>
-            </S.Developer>
-          </footer>
+          <Footer />
         </S.MainContainer>
       )}
     </>

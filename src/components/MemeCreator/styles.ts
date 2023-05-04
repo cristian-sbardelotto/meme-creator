@@ -9,17 +9,6 @@ export const MainContainer = styled.div`
   justify-content: space-around;
 `;
 
-export const Title = styled.h1`
-  font-size: 3rem;
-  font-weight: 900;
-  letter-spacing: 3px;
-
-  span {
-    font-weight: 900;
-    color: ${({ theme }) => theme.colors.primary_button};
-  }
-`;
-
 export const EditorContainer = styled.div`
   height: 100vh;
 
@@ -50,19 +39,6 @@ export const Button = styled.button`
   &:hover {
     cursor: pointer;
     filter: brightness(0.85);
-  }
-`;
-
-export const Developer = styled.p`
-  font-style: italic;
-
-  a {
-    text-decoration: none;
-    color: #6ee5d7;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 `;
 
