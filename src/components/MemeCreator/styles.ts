@@ -4,9 +4,16 @@ export const MainContainer = styled.div`
   height: 100vh;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  div {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 `;
 
 export const EditorContainer = styled.div`
@@ -18,9 +25,11 @@ export const EditorContainer = styled.div`
 `;
 
 export const Button = styled.button`
-  position: relative;
+  padding: 0.8rem 0 0.8rem 2rem;
 
-  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
 
   border: none;
   border-radius: 1rem;
@@ -33,7 +42,6 @@ export const Button = styled.button`
 
   input {
     width: 0;
-    height: 0;
   }
 
   &:hover {
@@ -43,5 +51,9 @@ export const Button = styled.button`
 `;
 
 export const Image = styled.img`
+  height: 200px;
+`;
+
+export const MemeImage = styled.img`
   height: 300px;
 `;

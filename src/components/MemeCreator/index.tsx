@@ -3,6 +3,11 @@ import { useState, useRef, ChangeEvent } from 'react';
 import Header from '../Header';
 import Footer from '../Footer';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
+import trollface from '/assets/trollface.png';
+
 import * as S from './styles';
 
 export default function MemeCreator() {
@@ -19,27 +24,35 @@ export default function MemeCreator() {
     <>
       {image ? (
         <S.EditorContainer>
-          <S.Image
+          <S.MemeImage
             src={URL.createObjectURL(image)}
             alt='image selected by the user to create the meme'
           />
         </S.EditorContainer>
       ) : (
         <S.MainContainer>
-          <Header />
+          <div>
+            <Header />
 
-          <main>
-            <S.Button onClick={() => inpRef.current?.click()}>
-              Create a New Meme
-              <input
-                ref={inpRef}
-                type='file'
-                onChange={event => addFile(event)}
-              />
-            </S.Button>
-          </main>
+            <main>
+              <S.Button onClick={() => inpRef.current?.click()}>
+                Create a New Meme
+                <FontAwesomeIcon icon={faPlus} />
+                <input
+                  ref={inpRef}
+                  type='file'
+                  onChange={event => addFile(event)}
+                />
+              </S.Button>
+            </main>
 
-          <Footer />
+            <Footer />
+          </div>
+
+          <S.Image
+            src={trollface}
+            alt=''
+          />
         </S.MainContainer>
       )}
     </>
