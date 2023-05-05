@@ -4,7 +4,9 @@ export default function Header() {
   return (
     <header>
       <S.Title>
-        Meme <span>Creator</span>
+        <a href="/">
+          Meme <span>Creator</span>
+        </a>
       </S.Title>
     </header>
   );
