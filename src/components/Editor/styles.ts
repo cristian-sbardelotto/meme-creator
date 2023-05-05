@@ -31,6 +31,14 @@ export const ImageGroup = styled.div`
   }
 `;
 
+export const EditorSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 100px;
+`;
+
 export const InputGroup = styled.div`
   position: relative;
 
@@ -56,5 +64,22 @@ export const Input = styled.input`
     background: #1119;
     outline: none;
     border: 3px solid ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+export const DiscardButton = styled.button`
+  padding: 0.4rem 1rem 0.4rem 1rem;
+
+  border: none;
+  border-radius: 5px;
+  background: #f95959;
+  font-size: 1rem;
+  color: #fff;
+
+  transition: 0.1s all ease;
+
+  &:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
   }
 `;

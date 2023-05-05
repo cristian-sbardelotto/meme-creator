@@ -9,9 +9,10 @@ import * as S from './styles';
 
 type EditorProps = {
   image: File;
+  discardImage: () => void;
 };
 
-export default function Editor({ image }: EditorProps) {
+export default function Editor({ image, discardImage }: EditorProps) {
   const [text, setText] = useState<string>('');
 
   return (
@@ -30,19 +31,23 @@ export default function Editor({ image }: EditorProps) {
           />
         </S.ImageGroup>
 
-        <S.InputGroup className='das'>
-          <FontAwesomeIcon
-            icon={faKeyboard}
-            color='#777'
-          />
+        <S.EditorSection>
+          <S.InputGroup className='das'>
+            <S.Input
+              type='text'
+              placeholder='Text on top...'
+              value={text}
+              onChange={event => setText(event.target.value)}
+            />
 
-          <S.Input
-            type='text'
-            placeholder='Text on top...'
-            value={text}
-            onChange={event => setText(event.target.value)}
-          />
-        </S.InputGroup>
+            <FontAwesomeIcon
+              icon={faKeyboard}
+              color='#777'
+            />
+          </S.InputGroup>
+
+          <S.DiscardButton onClick={discardImage}>Discard Changes</S.DiscardButton>
+        </S.EditorSection>
       </S.Container>
     </>
   );
