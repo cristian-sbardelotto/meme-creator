@@ -20,8 +20,15 @@ export default function Editor({ image, discardImage }: EditorProps) {
   const [text, setText] = useState<string>('');
   const memeRef = createRef<HTMLDivElement>();
 
+  const acceptedFiles = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png', '.svg', '.webp', '.ico'];
+  const fileExtensionRegex = /\.[^/.]+$/;
+
+  function getFileExtension(regex: RegExp) {
+    return String(regex.exec(image.name)?.[0]);
+  }
+
   function removeFileExtension(string: string) {
-    return string.replace(/\.[^/.]+$/, '');
+    return string.replace(fileExtensionRegex, '');
   }
 
   function saveMeme() {
@@ -33,6 +40,12 @@ export default function Editor({ image, discardImage }: EditorProps) {
     };
 
     exportComponentAsJPEG(memeRef, saveOptions);
+  }
+
+  const isImage = acceptedFiles.includes(getFileExtension(fileExtensionRegex));
+  if (!isImage) {
+    alert('Select a image file!');
+    location.reload();
   }
 
   return (
@@ -58,6 +71,7 @@ export default function Editor({ image, discardImage }: EditorProps) {
               placeholder='Text on top...'
               value={text}
               onChange={event => setText(event.target.value)}
+              accept='image/*'
             />
 
             <FontAwesomeIcon
