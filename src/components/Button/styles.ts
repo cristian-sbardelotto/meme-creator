@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type ButtonProps = {
   color: string;
+  checked?: boolean;
 };
 
 export const Button = styled.button<ButtonProps>`
@@ -9,7 +10,7 @@ export const Button = styled.button<ButtonProps>`
 
   border: none;
   border-radius: 5px;
-  background: ${({ color }) => color};
+  background: ${({ theme, checked, color }) => checked ? theme.colors.primary : color};
   font-size: 1rem;
   color: #fff;
 

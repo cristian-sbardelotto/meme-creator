@@ -6,7 +6,12 @@ import Button from '../Button';
 import { exportComponentAsJPEG } from 'react-component-export-image';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faKeyboard } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBold,
+  faItalic,
+  faKeyboard,
+  faUnderline,
+} from '@fortawesome/free-solid-svg-icons';
 
 import * as S from './styles';
 import { theme } from '../../styles/theme';
@@ -30,7 +35,13 @@ const fileExtensionRegex = /\.[^/.]+$/;
 
 export default function Editor({ image, discardImage }: EditorProps) {
   const [text, setText] = useState<string>('');
-  const [textColor, setTextColor] = useState<string>('#fff');
+
+  const [textColor, setTextColor] = useState<string>('#000');
+
+  const [hasUnderline, setHasUnderline] = useState<boolean>(false);
+  const [isItalic, setIsItalic] = useState<boolean>(false);
+  const [isBold, setIsBold] = useState<boolean>(false);
+
   const memeRef = createRef<HTMLDivElement>();
   const colorRef = createRef<HTMLInputElement>();
 
@@ -63,6 +74,18 @@ export default function Editor({ image, discardImage }: EditorProps) {
     setTextColor(String(colorRef.current?.value));
   }
 
+  function changeTextToBold() {
+    setIsBold(previous => !previous);
+  }
+
+  function changeTextToItalic() {
+    setIsItalic(previous => !previous);
+  }
+
+  function changeTextToUnderline() {
+    setHasUnderline(previous => !previous);
+  }
+
   return (
     <>
       <Header />
@@ -70,7 +93,14 @@ export default function Editor({ image, discardImage }: EditorProps) {
       <S.Container>
         <S.ImageGroup ref={memeRef}>
           <div>
-            <S.MemeText color={String(textColor)}>{text}</S.MemeText>
+            <S.MemeText
+              bold={isBold}
+              italic={isItalic}
+              underline={hasUnderline}
+              color={String(textColor)}
+            >
+              {text}
+            </S.MemeText>
           </div>
 
           <img
@@ -80,8 +110,8 @@ export default function Editor({ image, discardImage }: EditorProps) {
         </S.ImageGroup>
 
         <S.EditorSection>
-          <div className='a'>
-            <S.InputGroup className='das'>
+          <div>
+            <S.InputGroup>
               <S.Input
                 type='text'
                 placeholder='Text on top...'
@@ -102,6 +132,41 @@ export default function Editor({ image, discardImage }: EditorProps) {
                 type='color'
                 onChange={changeTextColor}
               />
+
+              <div>
+                <Button
+                  color='#ccc'
+                  onClick={() => changeTextToBold()}
+                  checked={isBold}
+                >
+                  <FontAwesomeIcon
+                    icon={faBold}
+                    color='#000'
+                  />
+                </Button>
+
+                <Button
+                  color='#ccc'
+                  onClick={() => changeTextToItalic()}
+                  checked={isItalic}
+                >
+                  <FontAwesomeIcon
+                    icon={faItalic}
+                    color='#000'
+                  />
+                </Button>
+
+                <Button
+                  color='#ccc'
+                  onClick={() => changeTextToUnderline()}
+                  checked={hasUnderline}
+                >
+                  <FontAwesomeIcon
+                    icon={faUnderline}
+                    color='#000'
+                  />
+                </Button>
+              </div>
             </S.FontStyleGroup>
           </div>
 

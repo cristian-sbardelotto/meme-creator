@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 type MemeTextProps = {
   color: string;
+  italic: boolean;
+  bold: boolean;
+  underline: boolean;
 };
 
 export const Container = styled.div`
@@ -9,7 +12,7 @@ export const Container = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 `;
 
 export const ImageGroup = styled.div`
@@ -25,7 +28,7 @@ export const ImageGroup = styled.div`
 
   img {
     height: 400px;
-    width: 500px;
+    width: 50vw;
   }
 `;
 
@@ -34,6 +37,10 @@ export const MemeText = styled.p<MemeTextProps>`
   word-break: break-all;
   font-size: 1.5rem;
   font-family: Impact, sans-serif;
+
+  font-style: ${({ italic }) => italic && 'italic'};
+  text-decoration: ${({ underline }) => underline && 'underline'};
+  font-weight: ${({ bold }) => bold && 'bold'};
 
   color: ${({ color }) => color};
 `;
@@ -76,8 +83,18 @@ export const Input = styled.input`
 
 export const FontStyleGroup = styled.div`
   margin-top: 5vh;
+  padding: .5rem 1.4rem;
 
   display: flex;
+  justify-content: space-between;
+
+  background: #4447;
+  border-radius: 15px;
+
+  div {
+    display: flex;
+    gap: 10px;
+  }
 `;
 
 export const ColorInput = styled.input`
@@ -92,12 +109,12 @@ export const ColorInput = styled.input`
   cursor: pointer;
 
   &::-webkit-color-swatch {
-    border-radius: 50%;
+    border-radius: 5px;
     border: 1px solid #fff;
   }
 
   &::-moz-color-swatch {
-    border-radius: 50%;
+    border-radius: 5px;
     border: none;
   }
 `;
