@@ -16,12 +16,23 @@ type EditorProps = {
   discardImage: () => void;
 };
 
+const acceptedFiles = [
+  '.jpg',
+  '.jpeg',
+  '.JPG',
+  '.JPEG',
+  '.png',
+  '.svg',
+  '.webp',
+  '.ico',
+];
+const fileExtensionRegex = /\.[^/.]+$/;
+
 export default function Editor({ image, discardImage }: EditorProps) {
   const [text, setText] = useState<string>('');
+  const [textColor, setTextColor] = useState<string>('#fff');
   const memeRef = createRef<HTMLDivElement>();
-
-  const acceptedFiles = ['.jpg', '.jpeg', '.JPG', '.JPEG', '.png', '.svg', '.webp', '.ico'];
-  const fileExtensionRegex = /\.[^/.]+$/;
+  const colorRef = createRef<HTMLInputElement>();
 
   function getFileExtension(regex: RegExp) {
     return String(regex.exec(image.name)?.[0]);
@@ -48,6 +59,10 @@ export default function Editor({ image, discardImage }: EditorProps) {
     location.reload();
   }
 
+  function changeTextColor() {
+    setTextColor(String(colorRef.current?.value));
+  }
+
   return (
     <>
       <Header />
@@ -55,7 +70,7 @@ export default function Editor({ image, discardImage }: EditorProps) {
       <S.Container>
         <S.ImageGroup ref={memeRef}>
           <div>
-            <p>{text}</p>
+            <S.MemeText color={String(textColor)}>{text}</S.MemeText>
           </div>
 
           <img
@@ -65,20 +80,30 @@ export default function Editor({ image, discardImage }: EditorProps) {
         </S.ImageGroup>
 
         <S.EditorSection>
-          <S.InputGroup className='das'>
-            <S.Input
-              type='text'
-              placeholder='Text on top...'
-              value={text}
-              onChange={event => setText(event.target.value)}
-              accept='image/*'
-            />
+          <div className='a'>
+            <S.InputGroup className='das'>
+              <S.Input
+                type='text'
+                placeholder='Text on top...'
+                value={text}
+                onChange={event => setText(event.target.value)}
+                accept='image/*'
+              />
 
-            <FontAwesomeIcon
-              icon={faKeyboard}
-              color='#777'
-            />
-          </S.InputGroup>
+              <FontAwesomeIcon
+                icon={faKeyboard}
+                color='#777'
+              />
+            </S.InputGroup>
+
+            <S.FontStyleGroup>
+              <S.ColorInput
+                ref={colorRef}
+                type='color'
+                onChange={changeTextColor}
+              />
+            </S.FontStyleGroup>
+          </div>
 
           <S.ButtonGroup>
             <Button
