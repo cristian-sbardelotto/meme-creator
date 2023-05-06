@@ -11,6 +11,7 @@ import { faKeyboard } from '@fortawesome/free-solid-svg-icons';
 
 import * as S from './styles';
 import { theme } from '../../styles/theme';
+import ActionButtons from '../ActionButtons';
 
 type EditorProps = {
   image: File;
@@ -127,21 +128,7 @@ export default function Editor({ image, discardImage }: EditorProps) {
             </S.FontStyleGroup>
           </div>
 
-          <S.ButtonGroup>
-            <Button
-              onClick={saveMeme}
-              color={theme.colors.primary}
-            >
-              Save
-            </Button>
-
-            <Button
-              onClick={discardImage}
-              color='#f95959'
-            >
-              Discard Changes
-            </Button>
-          </S.ButtonGroup>
+          <ActionButtons discardImage={discardImage} saveMeme={saveMeme} />
         </S.EditorSection>
       </S.Container>
     </>

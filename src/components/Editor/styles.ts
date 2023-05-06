@@ -81,11 +81,6 @@ export const Input = styled.input`
   }
 `;
 
-export const ButtonGroup = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
 export const FontStyleGroup = styled.div`
   margin-top: 5vh;
   padding: 0.5rem 1.4rem;
