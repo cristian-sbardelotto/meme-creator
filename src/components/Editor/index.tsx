@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, createRef } from 'react';
 
 import Header from '../Header';
 import Button from '../Button';
+
+import { exportComponentAsJPEG } from 'react-component-export-image';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKeyboard } from '@fortawesome/free-solid-svg-icons';
@@ -16,9 +18,21 @@ type EditorProps = {
 
 export default function Editor({ image, discardImage }: EditorProps) {
   const [text, setText] = useState<string>('');
+  const memeRef = createRef<HTMLDivElement>();
+
+  function removeFileExtension(string: string) {
+    return string.replace(/\.[^/.]+$/, '');
+  }
 
   function saveMeme() {
-    console.log('Meme saved!');
+    const fileName = image.name;
+    const formattedFileName = removeFileExtension(fileName);
+
+    const saveOptions = {
+      fileName: formattedFileName + ' meme',
+    };
+
+    exportComponentAsJPEG(memeRef, saveOptions);
   }
 
   return (
@@ -26,7 +40,7 @@ export default function Editor({ image, discardImage }: EditorProps) {
       <Header />
 
       <S.Container>
-        <S.ImageGroup>
+        <S.ImageGroup ref={memeRef}>
           <div>
             <p>{text}</p>
           </div>

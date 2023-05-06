@@ -9,6 +9,7 @@ export const Container = styled.div`
 `;
 
 export const ImageGroup = styled.div`
+  height: 400px;
   position: relative;
 
   div {
