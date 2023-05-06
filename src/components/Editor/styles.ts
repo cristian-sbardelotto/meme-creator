@@ -66,20 +66,3 @@ export const Input = styled.input`
     border: 3px solid ${({ theme }) => theme.colors.primary};
   }
 `;
-
-export const DiscardButton = styled.button`
-  padding: 0.4rem 1rem 0.4rem 1rem;
-
-  border: none;
-  border-radius: 5px;
-  background: #f95959;
-  font-size: 1rem;
-  color: #fff;
-
-  transition: 0.1s all ease;
-
-  &:hover {
-    filter: brightness(0.9);
-    cursor: pointer;
-  }
-`;

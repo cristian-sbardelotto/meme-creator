@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Header from '../Header';
+import Button from '../Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKeyboard } from '@fortawesome/free-solid-svg-icons';
@@ -46,7 +47,12 @@ export default function Editor({ image, discardImage }: EditorProps) {
             />
           </S.InputGroup>
 
-          <S.DiscardButton onClick={discardImage}>Discard Changes</S.DiscardButton>
+          <Button
+            onClick={discardImage}
+            color='#f95959'
+          >
+            Discard Changes
+          </Button>
         </S.EditorSection>
       </S.Container>
     </>
