@@ -81,9 +81,14 @@ export const Input = styled.input`
   }
 `;
 
+export const ButtonGroup = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
 export const FontStyleGroup = styled.div`
   margin-top: 5vh;
-  padding: .5rem 1.4rem;
+  padding: 0.5rem 1.4rem;
 
   display: flex;
   justify-content: space-between;
@@ -117,9 +122,4 @@ export const ColorInput = styled.input`
     border-radius: 5px;
     border: none;
   }
-`;
-
-export const ButtonGroup = styled.div`
-  display: flex;
-  gap: 20px;
 `;
