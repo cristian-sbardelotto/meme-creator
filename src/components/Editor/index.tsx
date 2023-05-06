@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKeyboard } from '@fortawesome/free-solid-svg-icons';
 
 import * as S from './styles';
+import { theme } from '../../styles/theme';
 
 type EditorProps = {
   image: File;
@@ -15,6 +16,10 @@ type EditorProps = {
 
 export default function Editor({ image, discardImage }: EditorProps) {
   const [text, setText] = useState<string>('');
+
+  function saveMeme() {
+    console.log('Meme saved!');
+  }
 
   return (
     <>
@@ -47,12 +52,21 @@ export default function Editor({ image, discardImage }: EditorProps) {
             />
           </S.InputGroup>
 
-          <Button
-            onClick={discardImage}
-            color='#f95959'
-          >
-            Discard Changes
-          </Button>
+          <S.ButtonGroup>
+            <Button
+              onClick={saveMeme}
+              color={theme.colors.primary}
+            >
+              Save
+            </Button>
+
+            <Button
+              onClick={discardImage}
+              color='#f95959'
+            >
+              Discard Changes
+            </Button>
+          </S.ButtonGroup>
         </S.EditorSection>
       </S.Container>
     </>

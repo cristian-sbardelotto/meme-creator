@@ -66,3 +66,8 @@ export const Input = styled.input`
     border: 3px solid ${({ theme }) => theme.colors.primary};
   }
 `;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  gap: 20px;
+`;
