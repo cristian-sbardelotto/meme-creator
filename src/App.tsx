@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 
-import Editor from './components/Editor';
-import Home from './components/Home';
+import Editor from './screens/Editor';
+import Home from './screens/Home';
 
 export default function App() {
   const [image, setImage] = useState<File | null>(null);
@@ -16,5 +16,16 @@ export default function App() {
     setImage(null);
   }
 
-  return <>{image ? <Editor image={image} discardImage={discardImage} /> : <Home addFile={addFile} />}</>;
+  return (
+    <>
+      {image ? (
+        <Editor
+          image={image}
+          discardImage={discardImage}
+        />
+      ) : (
+        <Home addFile={addFile} />
+      )}
+    </>
+  );
 }

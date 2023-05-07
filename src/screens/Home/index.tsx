@@ -1,7 +1,7 @@
 import { useRef, ChangeEvent } from 'react';
 
-import Header from '../Header';
-import Footer from '../Footer';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 import trollface from '/assets/trollface.png';
 

@@ -1,13 +1,13 @@
 import { useState, createRef } from 'react';
 
-import Header from '../Header';
-import TextStyleBar from '../TextStyleBar';
-import ActionButtons from '../ActionButtons';
+import Header from '../../components/Header';
+import TextStyleBar from '../../components/TextStyleBar';
+import ActionButtons from '../../components/ActionButtons';
+import Input from '../../components/Input';
 
 import { exportComponentAsJPEG } from 'react-component-export-image';
 
 import * as S from './styles';
-import Input from '../Input';
 
 type EditorProps = {
   image: File;
