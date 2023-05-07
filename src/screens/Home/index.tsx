@@ -1,6 +1,5 @@
 import { useRef, ChangeEvent } from 'react';
 
-import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 import trollface from '/assets/trollface.png';
@@ -20,8 +19,6 @@ export default function Home({ addFile }: HomeProps) {
   return (
     <S.Container>
       <div>
-        <Header />
-
         <main>
           <S.Button onClick={() => inpRef.current?.click()}>
             Create a New Meme

@@ -1,9 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from './theme';
-
-type ThemeProps = {
-  theme: typeof theme;
-};
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -16,8 +11,8 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     height: 100vh;
-    
-    background-color: ${({ theme }: ThemeProps) => theme.colors.background};
-    color: #fff;
+
+    background-color: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
   }
 `;

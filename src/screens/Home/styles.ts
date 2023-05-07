@@ -28,7 +28,7 @@ export const Button = styled.button`
   font-size: 1rem;
   font-weight: 700;
   background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
 
   transition: 0.1s all ease;
 

@@ -3,8 +3,16 @@ import { useState, ChangeEvent } from 'react';
 import Editor from './screens/Editor';
 import Home from './screens/Home';
 
+import Header from './components/Header';
+
+import { GlobalStyle } from './styles/GlobalStyle';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import light from './styles/themes/light';
+import dark from './styles/themes/dark';
+
 export default function App() {
   const [image, setImage] = useState<File | null>(null);
+  const [theme, setTheme] = useState<DefaultTheme>(dark);
 
   function addFile(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) return;
@@ -16,8 +24,15 @@ export default function App() {
     setImage(null);
   }
 
+  function toggleTheme() {
+    setTheme(theme.title === 'light' ? dark : light);
+  }
+
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Header toggleTheme={toggleTheme} />
+
       {image ? (
         <Editor
           image={image}
@@ -26,6 +41,6 @@ export default function App() {
       ) : (
         <Home addFile={addFile} />
       )}
-    </>
+    </ThemeProvider>
   );
 }

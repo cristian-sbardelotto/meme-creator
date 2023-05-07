@@ -1,7 +1,9 @@
+import { useContext } from 'react';
+
 import Button from '../Button';
 
+import { ThemeContext } from 'styled-components';
 import * as S from './styles';
-import { theme } from '../../styles/theme';
 
 type ActionButtonsProps = {
   saveMeme: () => void;
@@ -12,18 +14,20 @@ export default function ActionButtons({
   saveMeme,
   discardImage,
 }: ActionButtonsProps) {
+  const { colors } = useContext(ThemeContext);
+
   return (
     <S.ButtonGroup>
       <Button
         onClick={saveMeme}
-        color={theme.colors.primary}
+        color={colors.primary}
       >
         Save
       </Button>
 
       <Button
         onClick={discardImage}
-        color='#f95959'
+        color={colors.secondary}
       >
         Discard Changes
       </Button>

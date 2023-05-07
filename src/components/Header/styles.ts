@@ -8,7 +8,7 @@ export const Title = styled.h1`
 
   a {
     text-decoration: none;
-    color: #fff;
+    color: ${({ theme }) => theme.colors.text};
     font-weight: 900;
   }
 

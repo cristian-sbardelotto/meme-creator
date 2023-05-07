@@ -1,6 +1,5 @@
 import { useState, createRef } from 'react';
 
-import Header from '../../components/Header';
 import TextStyleBar from '../../components/TextStyleBar';
 import ActionButtons from '../../components/ActionButtons';
 import Input from '../../components/Input';
@@ -69,8 +68,6 @@ export default function Editor({ image, discardImage }: EditorProps) {
 
   return (
     <>
-      <Header />
-
       <S.Container>
         <Meme
           bold={isBold}
