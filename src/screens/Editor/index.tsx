@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import TextStyleBar from '../../components/TextStyleBar';
 import ActionButtons from '../../components/ActionButtons';
 import Input from '../../components/Input';
+import Meme from '../../components/Meme';
 
 import { exportComponentAsJPEG } from 'react-component-export-image';
 
@@ -34,8 +35,8 @@ export default function Editor({ image, discardImage }: EditorProps) {
   const [isItalic, setIsItalic] = useState<boolean>(false);
   const [hasUnderline, setHasUnderline] = useState<boolean>(false);
 
-  const memeRef = createRef<HTMLDivElement>();
   const colorRef = createRef<HTMLInputElement>();
+  const memeRef = createRef<HTMLDivElement>();
 
   function changeTextColor() {
     setTextColor(String(colorRef.current?.value));
@@ -54,7 +55,7 @@ export default function Editor({ image, discardImage }: EditorProps) {
     const formattedFileName = removeFileExtension(fileName);
 
     const saveOptions = {
-      fileName: formattedFileName + ' meme',
+      fileName: `${formattedFileName} meme`,
     };
 
     exportComponentAsJPEG(memeRef, saveOptions);
@@ -71,27 +72,22 @@ export default function Editor({ image, discardImage }: EditorProps) {
       <Header />
 
       <S.Container>
-        <S.ImageGroup ref={memeRef}>
-          <div>
-            <S.MemeText
-              bold={isBold}
-              italic={isItalic}
-              underline={hasUnderline}
-              color={String(textColor)}
-            >
-              {text}
-            </S.MemeText>
-          </div>
-
-          <img
-            src={URL.createObjectURL(image)}
-            alt='Image selected by the user to create the meme'
-          />
-        </S.ImageGroup>
+        <Meme
+          bold={isBold}
+          italic={isItalic}
+          underline={hasUnderline}
+          text={text}
+          textColor={textColor}
+          image={image}
+          imageRef={memeRef}
+        />
 
         <S.EditorSection>
           <div>
-            <Input text={text} setText={setText} />
+            <Input
+              text={text}
+              setText={setText}
+            />
 
             <S.FontStyleGroup>
               <S.ColorInput
@@ -111,7 +107,10 @@ export default function Editor({ image, discardImage }: EditorProps) {
             </S.FontStyleGroup>
           </div>
 
-          <ActionButtons discardImage={discardImage} saveMeme={saveMeme} />
+          <ActionButtons
+            discardImage={discardImage}
+            saveMeme={saveMeme}
+          />
         </S.EditorSection>
       </S.Container>
     </>
