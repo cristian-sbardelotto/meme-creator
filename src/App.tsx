@@ -31,16 +31,23 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header toggleTheme={toggleTheme} />
 
-      {image ? (
-        <Editor
-          image={image}
-          discardImage={discardImage}
-        />
-      ) : (
-        <Home addFile={addFile} />
-      )}
+      <div className='App'>
+        {/* <Header toggleTheme={toggleTheme} /> */}
+
+        {image ? (
+          <Editor
+            image={image}
+            discardImage={discardImage}
+          >
+            <Header toggleTheme={toggleTheme} />
+          </Editor>
+        ) : (
+          <Home addFile={addFile}>
+            <Header toggleTheme={toggleTheme} />
+          </Home>
+        )}
+      </div>
     </ThemeProvider>
   );
 }

@@ -11,33 +11,38 @@ import * as S from './styles';
 
 type HomeProps = {
   addFile: (event: ChangeEvent<HTMLInputElement>) => void;
+  children?: React.ReactNode;
 };
 
-export default function Home({ addFile }: HomeProps) {
+export default function Home({ addFile, children }: HomeProps) {
   const inpRef = useRef<HTMLInputElement>(null);
 
   return (
-    <S.Container>
-      <div>
-        <main>
-          <S.Button onClick={() => inpRef.current?.click()}>
-            Create a New Meme
-            <FontAwesomeIcon icon={faPlus} />
-            <input
-              ref={inpRef}
-              type='file'
-              onChange={event => addFile(event)}
-            />
-          </S.Button>
-        </main>
+    <>
+      <S.Container>
+        {children}
 
-        <Footer />
-      </div>
+        <S.MainGroup>
+          <main>
+            <S.Button onClick={() => inpRef.current?.click()}>
+              Create a New Meme
+              <FontAwesomeIcon icon={faPlus} />
+              <input
+                ref={inpRef}
+                type='file'
+                onChange={event => addFile(event)}
+              />
+            </S.Button>
+          </main>
 
-      <S.Image
-        src={trollface}
-        alt='Image of a example meme, the Trollface'
-      />
-    </S.Container>
+          <S.Image
+            src={trollface}
+            alt='Image of a example meme, the Trollface'
+          />
+        </S.MainGroup>
+      </S.Container>
+
+      <Footer />
+    </>
   );
 }
