@@ -7,11 +7,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+
+    transition: .5s background-color ease;
   }
 
   body {
-    height: 100vh;
-
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
   }

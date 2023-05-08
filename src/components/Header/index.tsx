@@ -13,7 +13,7 @@ export default function Header({ toggleTheme }: HeaderProps) {
   const { colors, title } = useContext(ThemeContext);
 
   return (
-    <header>
+    <S.Header>
       <S.Title>
         <a href='/'>
           Meme <span>Creator</span>
@@ -30,7 +30,8 @@ export default function Header({ toggleTheme }: HeaderProps) {
         handleDiameter={20}
         offColor={colors.text}
         onColor={colors.primary}
+        offHandleColor={colors.primary}
       />
-    </header>
+    </S.Header>
   );
 }

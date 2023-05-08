@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 export const Title = styled.h1`
   text-align: center;
   font-size: 3rem;

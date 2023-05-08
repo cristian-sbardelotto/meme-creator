@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
+  height: 85vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+export const MainGroup = styled.main`
+  width: 100vw;
 
   display: flex;
   align-items: center;
   justify-content: space-around;
-
-  div {
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
 `;
 
 export const Button = styled.button`

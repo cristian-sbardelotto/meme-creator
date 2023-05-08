@@ -10,7 +10,7 @@ export const Button = styled.button<ButtonProps>`
 
   border: none;
   border-radius: 5px;
-  background: ${({ theme, checked, color }) => checked ? theme.colors.primary : color};
+  background-color: ${({ theme, checked, color }) => checked ? theme.colors.primary : color};
   font-size: 1rem;
   color: #fff;
 

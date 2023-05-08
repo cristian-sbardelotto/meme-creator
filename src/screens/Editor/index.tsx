@@ -12,6 +12,7 @@ import * as S from './styles';
 type EditorProps = {
   image: File;
   discardImage: () => void;
+  children: React.ReactNode;
 };
 
 const acceptedFiles = [
@@ -26,7 +27,7 @@ const acceptedFiles = [
 ];
 const fileExtensionRegex = /\.[^/.]+$/;
 
-export default function Editor({ image, discardImage }: EditorProps) {
+export default function Editor({ image, discardImage, children }: EditorProps) {
   const [text, setText] = useState<string>('');
   const [textColor, setTextColor] = useState<string>('#000');
 
@@ -68,6 +69,7 @@ export default function Editor({ image, discardImage }: EditorProps) {
 
   return (
     <>
+      {children}
       <S.Container>
         <Meme
           bold={isBold}
