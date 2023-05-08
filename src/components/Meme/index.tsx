@@ -1,7 +1,7 @@
 import { RefObject } from 'react';
 import * as S from './styles';
 
-type ImageProps = {
+type MemeProps = {
   bold: boolean;
   italic: boolean;
   underline: boolean;
@@ -11,7 +11,7 @@ type ImageProps = {
   imageRef: RefObject<HTMLDivElement>;
 }
 
-export default function Image({ bold, italic, underline, text, textColor, image, imageRef }: ImageProps) {
+export default function Meme({ bold, italic, underline, text, textColor, image, imageRef }: MemeProps) {
   return (
     <S.ImageGroup ref={imageRef}>
       <div>
