@@ -6,14 +6,25 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
+  @media screen and (max-width: 1279px) {
+    flex-direction: column;
+    gap: 50px;
+  }
 `;
 
 export const EditorSection = styled.section`
   height: 350px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 1279px) {
+    justify-content: unset;
+    gap: 4vh;
+  }
 `;
 
 export const FontStyleGroup = styled.div`
