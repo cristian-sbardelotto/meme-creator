@@ -8,5 +8,8 @@ export default {
 
     background: '#f4f4f4',
     text: '#333',
+
+    inputBackground: '#aaa',
+    inputPlaceholder: '#000'
   },
 };

@@ -12,7 +12,7 @@ import dark from './styles/themes/dark';
 
 export default function App() {
   const [image, setImage] = useState<File | null>(null);
-  const [theme, setTheme] = useState<DefaultTheme>(dark);
+  const [theme, setTheme] = useState<DefaultTheme>(light);
 
   function addFile(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) return;
@@ -32,22 +32,18 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
 
-      <div className='App'>
-        {/* <Header toggleTheme={toggleTheme} /> */}
-
-        {image ? (
-          <Editor
-            image={image}
-            discardImage={discardImage}
-          >
-            <Header toggleTheme={toggleTheme} />
-          </Editor>
-        ) : (
-          <Home addFile={addFile}>
-            <Header toggleTheme={toggleTheme} />
-          </Home>
-        )}
-      </div>
+      {image ? (
+        <Editor
+          image={image}
+          discardImage={discardImage}
+        >
+          <Header toggleTheme={toggleTheme} />
+        </Editor>
+      ) : (
+        <Home addFile={addFile}>
+          <Header toggleTheme={toggleTheme} />
+        </Home>
+      )}
     </ThemeProvider>
   );
 }

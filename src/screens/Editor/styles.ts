@@ -23,7 +23,7 @@ export const FontStyleGroup = styled.div`
   display: flex;
   justify-content: space-between;
 
-  background: #4447;
+  background-color: #4447;
   border-radius: 15px;
 
   div {
