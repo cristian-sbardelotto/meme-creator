@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 
 import Editor from './screens/Editor';
 import Home from './screens/Home';
@@ -10,9 +10,14 @@ import { DefaultTheme, ThemeProvider } from 'styled-components';
 import light from './styles/themes/light';
 import dark from './styles/themes/dark';
 
+const LOCAL_STORAGE_THEME_KEY = 'theme';
+const userSavedTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
+
 export default function App() {
   const [image, setImage] = useState<File | null>(null);
-  const [theme, setTheme] = useState<DefaultTheme>(light);
+  const [theme, setTheme] = useState<DefaultTheme>(
+    userSavedTheme === 'light' ? light : dark
+  );
 
   function addFile(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) return;
@@ -27,6 +32,11 @@ export default function App() {
   function toggleTheme() {
     setTheme(theme.title === 'light' ? dark : light);
   }
+
+  useEffect(
+    () => localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme.title),
+    [theme]
+  );
 
   return (
     <ThemeProvider theme={theme}>
