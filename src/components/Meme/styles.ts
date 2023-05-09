@@ -21,6 +21,10 @@ export const ImageGroup = styled.div`
   img {
     height: 400px;
     width: 50vw;
+
+    @media screen and (max-width: 1279px) {
+      width: 70vw;
+    }
   }
 `;
 

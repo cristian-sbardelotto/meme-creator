@@ -4,6 +4,11 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 4vh;
+  }
 `;
 
 export const Title = styled.h1`
