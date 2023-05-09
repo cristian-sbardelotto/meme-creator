@@ -14,6 +14,11 @@ export const MainGroup = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+    gap: 4vh;
+  }
 `;
 
 export const Button = styled.button`
