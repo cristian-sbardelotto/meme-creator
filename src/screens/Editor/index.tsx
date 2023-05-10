@@ -50,7 +50,7 @@ export default function Editor({ image, discardImage, children }: EditorProps) {
     return string.replace(fileExtensionRegex, '');
   }
 
-  function saveMeme() {
+  function downloadMeme() {
     const fileName = image.name;
     const formattedFileName = removeFileExtension(fileName);
 
@@ -108,7 +108,7 @@ export default function Editor({ image, discardImage, children }: EditorProps) {
 
           <ActionButtons
             discardImage={discardImage}
-            saveMeme={saveMeme}
+            downloadMeme={downloadMeme}
           />
         </S.EditorSection>
       </S.Container>
