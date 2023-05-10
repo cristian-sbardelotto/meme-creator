@@ -2,16 +2,20 @@ import { useContext } from 'react';
 
 import Button from '../Button';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+
 import { ThemeContext } from 'styled-components';
 import * as S from './styles';
 
+
 type ActionButtonsProps = {
-  saveMeme: () => void;
+  downloadMeme: () => void;
   discardImage: () => void;
 };
 
 export default function ActionButtons({
-  saveMeme,
+  downloadMeme,
   discardImage,
 }: ActionButtonsProps) {
   const { colors } = useContext(ThemeContext);
@@ -19,10 +23,11 @@ export default function ActionButtons({
   return (
     <S.ButtonGroup>
       <Button
-        onClick={saveMeme}
+        onClick={downloadMeme}
         color={colors.primary}
       >
-        Save
+        Download
+        <FontAwesomeIcon icon={faDownload}  />
       </Button>
 
       <Button

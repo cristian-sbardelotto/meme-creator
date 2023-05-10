@@ -8,6 +8,10 @@ type ButtonProps = {
 export const Button = styled.button<ButtonProps>`
   padding: 0.4rem 1rem 0.4rem 1rem;
 
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
   border: none;
   border-radius: 5px;
   background-color: ${({ theme, checked, color }) => checked ? theme.colors.primary : color};
